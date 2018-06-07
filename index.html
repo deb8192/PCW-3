@@ -3,7 +3,40 @@
 	<head>
 	</head>
 	<body>
-		<canvas id="imagenSelect" width="360px" height="240px"></canvas>
-		<canvas id="puzzle" width="360px" height="240px"></canvas>
+		<header>
+			<h1>RompeCocos</h1>
+			<h3>Elige una imagen y reconstrúyela</h3>
+		</header>
+		<section>
+			<h4>Tu foto</h4>
+			<p>Haz click para seleccionar una imagen o arrástrala aquí</p>
+			<button>Examinar</button>
+			<canvas id="imagenSelect" width="360px" height="240px">
+			</canvas>
+			<canvas id="puzzle" width="360px" height="240px"></canvas>
+		</section>
+		<script type="text/javascript">
+			var imagenSelect = document.getElementById('imagenSelect');
+			var foto = null;
+			imagenSelect.ondrop = function(e)
+			{
+				if(e.stopPropatation)
+				{
+					e.stopPropatation();
+				}
+				e.preventDefault();
+				foto = e.dataTransfer.files;
+				if(foto.name != null || foto.name != undefined)
+					imagenSelect.style.backgroundColor = "blue";
+			}
+			imagenSelect.ondragover = function(e)
+			{
+				if(e.stopPropatation)
+				{
+					e.stopPropatation();
+				}				
+				e.preventDefault();
+			}
+		</script>
 	</body>
 </html>
